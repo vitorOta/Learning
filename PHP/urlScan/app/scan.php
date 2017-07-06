@@ -3,9 +3,10 @@
 require 'vendor/autoload.php';
 
 use League\Csv\Reader;
+use GuzzleHttp\Client;
 
 //2. Instantiate Guzzle Httpl client
-$client = new \GuzzleHttp\Client();
+$client = new Client();
 
 //3. Open and iterate CSV
 $csv = Reader::createFromPath($argv[1]);
