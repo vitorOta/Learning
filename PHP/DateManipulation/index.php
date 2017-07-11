@@ -1,7 +1,8 @@
 <?php
-require '../PrintlnComponent/src/Util/Util.php';
+require 'vendor/autoload.php';
+require 'vendor/vitorota/println-component/src/index.php';
 
-use Vitorota\Util\Util as Util;
+use Vitorota\Util\Util;
 
 const DT_FORMAT = 'd-m-y H:i:s';
 
