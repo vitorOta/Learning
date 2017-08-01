@@ -1,0 +1,5 @@
+{
+    "require": {
+        "vitorota/println-component": "^1.0"
+    }
+}

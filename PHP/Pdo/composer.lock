@@ -1,0 +1,50 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "f8b67aab6442b0a7ef6b44cded26ed7e",
+    "packages": [
+        {
+            "name": "vitorota/println-component",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vitorOta/PrintlnComponent.git",
+                "reference": "f4bdf23a8674b3645b61cacda484784356bbf4ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vitorOta/PrintlnComponent/zipball/f4bdf23a8674b3645b61cacda484784356bbf4ec",
+                "reference": "f4bdf23a8674b3645b61cacda484784356bbf4ec",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "VitorOta\\Util\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vitor Ota"
+                }
+            ],
+            "description": "simple print with breakline according to running envinroment",
+            "time": "2017-07-11T12:52:19+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
