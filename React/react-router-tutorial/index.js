@@ -20,3 +20,5 @@ render(
         </Router>
     )
     , document.getElementById('app'))
+
+    //stop on https://github.com/reactjs/react-router-tutorial/tree/master/lessons/10-clean-urls
