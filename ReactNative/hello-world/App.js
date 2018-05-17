@@ -1,12 +1,17 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Alert, Button, StyleSheet, Text, View} from 'react-native';
 
 export default class App extends React.Component {
+
+    testMessage = ()=>Alert.alert("oi", "fim");
+
     render() {
         return (
             <View style={styles.container}>
                 <Text>Hello World !</Text>
-                <View style={{width: 50, height: 50, backgroundColor: '#f00'}}/>
+                <View
+                      style={{width: 50, height: 50, backgroundColor: '#f00'}}/>
+                <Button onPress={this.testMessage} title="first button"/>
             </View>
         );
     }
