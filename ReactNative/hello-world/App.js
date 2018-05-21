@@ -1,27 +1,29 @@
 import React from 'react';
 import {Alert, Button, StyleSheet, Text, View} from 'react-native';
+import {StackNavigator} from 'react-navigation';
+import Screen1 from "./Screen1";
+import Screen2 from "./Screen2";
 
-export default class App extends React.Component {
+const App = StackNavigator({
+    MyScreen1: {screen: Screen1},
+    MyScreen2: {screen: Screen2},
+}, {initialRouteName: 'MyScreen1'});
+export default App;
 
-    testMessage = ()=>Alert.alert("oi", "fim");
+// export default class App extends React.Component {
+//     render() {
+//         return StackNavigator({
+//             MyScreen1: {screen: Screen1},
+//             MyScreen2: {screen: Screen2},
+//         }, {initialRouteName: 'Screen'});
+//     }
+// }
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text>Hello World !</Text>
-                <View
-                      style={{width: 50, height: 50, backgroundColor: '#f00'}}/>
-                <Button onPress={this.testMessage} title="first button"/>
-            </View>
-        );
-    }
-}
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         backgroundColor: '#fff',
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//     },
+// });
