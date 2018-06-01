@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import Todo from "./Todo";
+import VisibleTodoList from '../containers/VisibleTodoList';
 
 export default class App extends React.Component {
     state = {
@@ -12,7 +12,7 @@ export default class App extends React.Component {
 
         return (
             <View style={styles.container}>
-                <Todo onClick={() => this.setState({completed: !completed})} completed={completed} text="Teste"/>
+                <VisibleTodoList/>
             </View>
         );
     }

@@ -1,27 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, Text, TouchableHighlight} from "react-native";
+import {StyleSheet, Text} from "react-native";
+
 
 export default class Todo extends React.Component {
+
     render() {
         //TODO increment
         return (
-            <TouchableHighlight onPress={this.props.onClick} underlayColor="#ddd">
-                <Text style={this.props.completed ? styles.completed : styles.normal}>
-                    {this.props.text}
-                </Text>
-            </TouchableHighlight>
+            <Text style={this.props.completed ? styles.textCompleted : styles.text}>
+                {this.props.text}
+            </Text>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    normal: {
-        textDecorationLine: 'none'
+    text: {
+        padding: 10,
+        backgroundColor: 'steelblue',
+        color: 'white',
+        fontSize: 16,
+        textDecorationLine: 'none',
     },
-    completed: {
+    textCompleted: {
+        padding: 10,
+        backgroundColor: 'steelblue',
+        color: 'white',
+        fontSize: 16,
         textDecorationLine: 'line-through'
     }
+
 });
 
 Todo.propTypes = {

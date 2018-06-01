@@ -1,8 +1,24 @@
 import React from 'react';
-import {createStore} from "redux";
-import todoApp from "./reducers";
+import {createStore} from 'redux';
+import todoAppReducer from './reducers';
+
+import {persistStore, persistReducer} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 
-const confgureStore = ()=>createStore(todoApp);
+const persistConfig = {
+    key: 'app',
+    storage,
+}
+const persistedReducer = persistReducer(persistConfig, todoAppReducer);
 
-export default confgureStore;
+
+export default () => {
+    const store = createStore(persistedReducer);
+    const persistor = persistStore(store);
+
+    return {
+        store,
+        persistor
+    };
+}
