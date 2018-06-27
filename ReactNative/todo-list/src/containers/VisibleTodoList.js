@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import TodoList from "../components/TodoList";
-import {toggleTodo} from "../redux/actions";
+import {removeTodo, toggleTodo} from "../redux/actions";
+import {Alert} from "react-native";
 
 const mapStateToProps = state => {
     return {
@@ -9,10 +10,18 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch=>{
+const mapDispatchToProps = dispatch => {
     return {
-        onTodoClick: id=> {
+        onTodoClick: id => {
             dispatch(toggleTodo(id));
+        },
+        onTodoLongClick: id => {
+
+            Alert.alert('Excluir nota', 'Deseja excluir essa nota?',
+                [
+                    {text:'Sim', onPress: ()=> dispatch(removeTodo(id))},
+                    {text:'Não'},
+                ]);
         }
     };
 };

@@ -1,16 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, Text} from "react-native";
+import {StyleSheet, Text, TouchableNativeFeedback} from "react-native";
 
 
 export default class Todo extends React.Component {
 
+
+    _onPress = () => {
+        if (this.props.onClick) {
+            this.props.onClick(this.props.id);
+        }
+    };
+    _onLongPress = () => {
+        if (this.props.onLongClick) {
+            this.props.onLongClick(this.props.id);
+        }
+    };
+
     render() {
         //TODO increment
         return (
-            <Text style={this.props.completed ? styles.textCompleted : styles.text}>
-                {this.props.text}
-            </Text>
+            <TouchableNativeFeedback onPress={this._onPress} onLongPress={this._onLongPress}>
+                <Text style={this.props.completed ? styles.textCompleted : styles.text}>
+                    {' ' + this.props.text + ' '}
+                </Text>
+            </TouchableNativeFeedback>
         );
     }
 }
@@ -18,15 +32,15 @@ export default class Todo extends React.Component {
 const styles = StyleSheet.create({
     text: {
         padding: 10,
-        backgroundColor: 'steelblue',
-        color: 'white',
+        // backgroundColor: 'steelblue',
+        color: 'black',
         fontSize: 16,
         textDecorationLine: 'none',
     },
     textCompleted: {
         padding: 10,
-        backgroundColor: 'steelblue',
-        color: 'white',
+        // backgroundColor: 'steelblue',
+        color: 'gray',
         fontSize: 16,
         textDecorationLine: 'line-through'
     }
@@ -34,7 +48,9 @@ const styles = StyleSheet.create({
 });
 
 Todo.propTypes = {
-    onClick: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
+    onLongClick: PropTypes.func.isRequired,
 };

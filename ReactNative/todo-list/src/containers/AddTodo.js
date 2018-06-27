@@ -1,17 +1,18 @@
 import React from "react";
 import {addTodo} from "../redux/actions";
+import {Button, TextInput, View} from "react-native";
+import {connect} from "react-redux";
 
-export class AddTodo extends React.Component{
+class AddTodoCmp extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            text:''
+            text: ''
         };
     }
 
     _onPressButton = () => {
-
         let {text} = this.state;
         if (text.trim().length == 0) {
             return;
@@ -23,15 +24,29 @@ export class AddTodo extends React.Component{
     };
 
     render() {
-
+        return (
+            <View>
+                <TextInput placeholder="Nova tarefa"
+                           value={this.state.text}
+                           onChangeText={(text) => this.setState({text})}/>
+                <Button title="+ Adicionar" style={{height:80}} onPress={this._onPressButton}/>
+            </View>
+        );
     }
 }
 
-
-const mapDispatchToProps = dispatch=>{
+const mapStateToProps = state => {
     return {
-        addTodo: text=> {
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addTodo: text => {
             dispatch(addTodo(text));
         }
     };
 };
+
+const AddTodo = connect(mapStateToProps,mapDispatchToProps)(AddTodoCmp);
+export default AddTodo;

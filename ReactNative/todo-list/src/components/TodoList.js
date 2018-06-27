@@ -7,8 +7,9 @@ export default class TodoList extends React.Component {
 
     extractKey = ({id}) => id;
 
-    renderItem = (item) => (
-        <Todo text={item.text} completed={item.completed} onClick={this.props.onTodoClick}/>
+    renderItem = ({item}) => (
+        <Todo key={item.id} id={item.id} text={item.text} completed={item.completed}
+              onClick={this.props.onTodoClick} onLongClick={this.props.onTodoLongClick}/>
     );
 
     render() {
@@ -33,10 +34,11 @@ const styles = StyleSheet.create({
 TodoList.propTypes = {
     todos: PropTypes.arrayOf(
         PropTypes.shape({
-            id: PropTypes.number.isRequired,
+            id: PropTypes.string.isRequired,
             completed: PropTypes.bool.isRequired,
             text: PropTypes.string.isRequired
         })
     ).isRequired,
-    onTodoClick: PropTypes.func.isRequired
+    onTodoClick: PropTypes.func.isRequired,
+    onTodoLongClick: PropTypes.func.isRequired,
 };
