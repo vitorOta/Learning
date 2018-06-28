@@ -12,7 +12,7 @@ class AddTodoCmp extends React.Component {
         };
     }
 
-    _onPressButton = () => {
+    _addNote = () => {
         let {text} = this.state;
         if (text.trim().length == 0) {
             return;
@@ -28,16 +28,17 @@ class AddTodoCmp extends React.Component {
             <View>
                 <TextInput placeholder="Nova tarefa"
                            value={this.state.text}
-                           onChangeText={(text) => this.setState({text})}/>
-                <Button title="+ Adicionar" style={{height:80}} onPress={this._onPressButton}/>
+                           onChangeText={(text) => this.setState({text})}
+                           onSubmitEditing={this._addNote}
+                />
+                <Button title="+ Adicionar" style={{height: 80}} onPress={this._addNote}/>
             </View>
         );
     }
 }
 
 const mapStateToProps = state => {
-    return {
-    };
+    return {};
 };
 
 const mapDispatchToProps = dispatch => {
@@ -48,5 +49,5 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-const AddTodo = connect(mapStateToProps,mapDispatchToProps)(AddTodoCmp);
+const AddTodo = connect(mapStateToProps, mapDispatchToProps)(AddTodoCmp);
 export default AddTodo;

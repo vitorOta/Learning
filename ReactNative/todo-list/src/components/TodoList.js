@@ -7,8 +7,8 @@ export default class TodoList extends React.Component {
 
     extractKey = ({id}) => id;
 
-    renderItem = ({item}) => (
-        <Todo key={item.id} id={item.id} text={item.text} completed={item.completed}
+    renderItem = ({item, index}) => (
+        <Todo key={item.id} id={item.id} text={item.text} completed={item.completed} index={index}
               onClick={this.props.onTodoClick} onLongClick={this.props.onTodoLongClick}/>
     );
 

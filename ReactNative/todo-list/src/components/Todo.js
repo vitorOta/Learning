@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, Text, TouchableNativeFeedback} from "react-native";
+import {StyleSheet, Text, TouchableHighlight} from "react-native";
 
 
 export default class Todo extends React.Component {
@@ -18,13 +18,20 @@ export default class Todo extends React.Component {
     };
 
     render() {
-        //TODO increment
         return (
-            <TouchableNativeFeedback onPress={this._onPress} onLongPress={this._onLongPress}>
+            <TouchableHighlight
+                onPress={this._onPress}
+                onLongPress={this._onLongPress}
+                style={
+                    {
+                        backgroundColor: this.props.index % 2 == 0 ? '#FFFFFF' : '#e7e7e7',
+                        height: 60
+                    }
+                }>
                 <Text style={this.props.completed ? styles.textCompleted : styles.text}>
                     {' ' + this.props.text + ' '}
                 </Text>
-            </TouchableNativeFeedback>
+            </TouchableHighlight>
         );
     }
 }
@@ -49,6 +56,7 @@ const styles = StyleSheet.create({
 
 Todo.propTypes = {
     id: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
     completed: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
