@@ -49,8 +49,6 @@ class ProjectListFragment : Fragment() {
                 .replace(R.id.fragment_container, projectFragment)
                 .commit()
         }
-
-
     }
 
     //gmb
@@ -77,7 +75,7 @@ class ProjectListFragment : Fragment() {
         viewModel.projectListObservable.observe(
             this,
             Observer<List<Project>> {
-                projectAdapter.setItems(it)
+                projectAdapter.submitList(it)
                 hideLoading()
             }
         )
