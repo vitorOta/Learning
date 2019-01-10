@@ -6,13 +6,16 @@ import retrofit2.http.Path
 import vitorota.mvvm.service.model.Project
 
 interface GitHubService {
-    val HTTPS_API_GITHUB_URL: String
-        get() = "https://api.github.com/"
+    companion object {
+        val HTTPS_API_GITHUB_URL: String
+            get() = "https://api.github.com/"
+    }
 
-    @GET("users/{user}/repos")
-    fun getProjectList(@Path("user") user:String):Call<List<Project>>
 
-    @GET("repos/{user}/{repoName}")
-    fun getProjectDetails(@Path("user") user:String, @Path("repoName") repoName:String):Call<List<Project>>
+    @GET("users/{userId}/repos")
+    fun getProjectList(@Path("userId") userId:String):Call<List<Project>>
+
+    @GET("repos/{userId}/{repoName}")
+    fun getProjectDetails(@Path("userId") userId:String, @Path("repoName") repoName:String):Call<Project>
 
 }
