@@ -1,6 +1,6 @@
 package vitorota.mvvm.view.adapter
 
-import android.support.v7.util.DiffUtil
+import androidx.recyclerview.widget.DiffUtil
 import vitorota.mvvm.service.model.Project
 
 class ProjectDiffCallback : DiffUtil.ItemCallback<Project>() {

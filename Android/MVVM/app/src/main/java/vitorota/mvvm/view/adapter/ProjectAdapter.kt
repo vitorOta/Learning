@@ -1,8 +1,8 @@
 package vitorota.mvvm.view.adapter
 
-import android.support.v7.recyclerview.extensions.ListAdapter
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +25,7 @@ class ProjectAdapter(private val onClick:(project:Project) -> Unit) :
         viewHolder.bind(project, onClick)
     }
 
-    class ProjectViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    class ProjectViewHolder(val view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         //why just not use in bind method? https://stackoverflow.com/questions/45951792/kotlin-android-extensions-in-viewholder
         private val tvRepoName: TextView = view.tvRepoName
         private val tvRepoDescription: TextView = view.tvRepoDetails

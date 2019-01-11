@@ -1,8 +1,8 @@
 package vitorota.mvvm.viewmodel
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import vitorota.mvvm.service.model.Project
 import vitorota.mvvm.service.repository.ProjectRepository
 import javax.inject.Inject

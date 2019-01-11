@@ -1,7 +1,7 @@
 package vitorota.mvvm.viewmodel
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import android.util.ArrayMap
 import vitorota.mvvm.di.ViewModelSubComponent
 import java.util.concurrent.Callable

@@ -1,6 +1,6 @@
 package vitorota.mvvm.di
 
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

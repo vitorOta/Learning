@@ -1,12 +1,12 @@
 package vitorota.mvvm.view.ui
 
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +18,7 @@ import vitorota.mvvm.view.adapter.ProjectAdapter
 import vitorota.mvvm.viewmodel.ProjectListViewModel
 import javax.inject.Inject
 
-class ProjectListFragment : Fragment(), Injectable {
+class ProjectListFragment : androidx.fragment.app.Fragment(), Injectable {
 
     private lateinit var projectAdapter: ProjectAdapter
 
@@ -40,7 +40,7 @@ class ProjectListFragment : Fragment(), Injectable {
 
         projectAdapter = ProjectAdapter(::show)
         recyclerView.adapter = projectAdapter
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
 
         showLoading()
     }
