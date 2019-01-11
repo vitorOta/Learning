@@ -5,21 +5,10 @@ import android.arch.lifecycle.MutableLiveData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import vitorota.mvvm.service.model.Project
+import javax.inject.Inject
 
-class ProjectRepository {
-    private val gitHubService: GitHubService
-
-    init {
-        var retrofit = Retrofit.Builder()
-            .baseUrl(GitHubService.HTTPS_API_GITHUB_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        //TODO remove - will be injected using Dagger later
-        gitHubService = retrofit.create(GitHubService::class.java)
-    }
+class ProjectRepository @Inject constructor(var gitHubService: GitHubService) {
 
     fun getProjectList(user: String): LiveData<List<Project>> {
         val data: MutableLiveData<List<Project>> = MutableLiveData()
@@ -59,13 +48,5 @@ class ProjectRepository {
 
         return data
     }
-
-    companion object {
-        //TODO remove - will be injected by Dagger later
-        val instance by lazy {
-            ProjectRepository()
-        }
-    }
-
 
 }

@@ -2,6 +2,7 @@ package vitorota.mvvm.view.ui
 
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -12,10 +13,15 @@ import android.view.ViewGroup
 
 import vitorota.mvvm.R
 import kotlinx.android.synthetic.main.fragment_project.*
+import vitorota.mvvm.di.Injectable
 import vitorota.mvvm.service.model.Project
 import vitorota.mvvm.viewmodel.ProjectViewModel
+import javax.inject.Inject
 
-class ProjectFragment : Fragment() {
+class ProjectFragment : Fragment(), Injectable {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,13 +33,12 @@ class ProjectFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val factory = ProjectViewModel.Factory(activity!!.application, arguments?.getString(KEY_PROJECT_ID) ?:"")
-
-        val viewModel = ViewModelProviders.of(this, factory).get(ProjectViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProjectViewModel::class.java)
         observeViewModel(viewModel)
     }
 
     private fun observeViewModel(viewModel: ProjectViewModel) {
+        viewModel.setProjectId(arguments?.getString(KEY_PROJECT_ID)?:"")
         viewModel.projectObservable.observe(this, Observer<Project> {
             tvRepoName.text = it?.name
             tvRepoDetails.text = it?.description

@@ -2,6 +2,7 @@ package vitorota.mvvm.view.ui
 
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -11,13 +12,18 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_project_list.*
 import vitorota.mvvm.R
+import vitorota.mvvm.di.Injectable
 import vitorota.mvvm.service.model.Project
 import vitorota.mvvm.view.adapter.ProjectAdapter
 import vitorota.mvvm.viewmodel.ProjectListViewModel
+import javax.inject.Inject
 
-class ProjectListFragment : Fragment() {
+class ProjectListFragment : Fragment(), Injectable {
 
     private lateinit var projectAdapter: ProjectAdapter
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,7 +73,7 @@ class ProjectListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val viewModel = ViewModelProviders.of(this).get(ProjectListViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProjectListViewModel::class.java)
         observeViewModel(viewModel)
     }
 
@@ -82,6 +88,9 @@ class ProjectListFragment : Fragment() {
     }
 
     companion object {
+
+        val TAG:String = this::class.java.name
+
         fun getInstance(): ProjectListFragment {
             val fragment: ProjectListFragment = ProjectListFragment()
 

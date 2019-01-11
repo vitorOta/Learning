@@ -7,8 +7,7 @@ class ProjectDiffCallback : DiffUtil.ItemCallback<Project>() {
     override fun areItemsTheSame(oldItem: Project, newItem: Project): Boolean = oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: Project, newItem: Project): Boolean =
-        oldItem != null &&
-                oldItem.id == newItem.id &&
+        oldItem.id == newItem.id &&
                 oldItem.git_url == newItem.git_url
 
 }
