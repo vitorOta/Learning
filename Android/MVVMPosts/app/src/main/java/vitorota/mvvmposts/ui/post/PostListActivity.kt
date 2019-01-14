@@ -13,8 +13,8 @@ class PostListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPostListBinding
     private lateinit var viewModel: PostListViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_post_list)
         binding.postList.layoutManager = LinearLayoutManager(this)
