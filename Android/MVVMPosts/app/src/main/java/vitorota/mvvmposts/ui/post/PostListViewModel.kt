@@ -7,6 +7,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import vitorota.mvvmposts.R
 import vitorota.mvvmposts.base.BaseViewModel
+import vitorota.mvvmposts.model.Post
 import vitorota.mvvmposts.network.PostApi
 import javax.inject.Inject
 
@@ -21,6 +22,8 @@ class PostListViewModel : BaseViewModel() {
     val errorMessage:MutableLiveData<Int> = MutableLiveData()
     val errorClickListener = View.OnClickListener { loadPosts() }
 
+    val postListAdapter:PostListAdapter = PostListAdapter()
+
     init {
         loadPosts()
     }
@@ -32,7 +35,7 @@ class PostListViewModel : BaseViewModel() {
             .doOnSubscribe { onRetrivePostListStart() }
             .doOnTerminate { onRetrievePostListFinish() }
             .subscribe(
-                { onRetrievePostListSuccess() },
+                { onRetrievePostListSuccess(it) },
                 { onRetrievePostListError() }
             )
     }
@@ -46,7 +49,8 @@ class PostListViewModel : BaseViewModel() {
         loadingVisibility.value = View.GONE
     }
 
-    private fun onRetrievePostListSuccess() {
+    private fun onRetrievePostListSuccess(postList: List<Post>) {
+        postListAdapter.submitList(postList)
     }
 
     private fun onRetrievePostListError() {
