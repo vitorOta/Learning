@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import vitorota.mvvmposts.R
 import vitorota.mvvmposts.base.BaseViewModel
 import vitorota.mvvmposts.network.PostApi
 import javax.inject.Inject
@@ -15,8 +16,10 @@ class PostListViewModel : BaseViewModel() {
 
     private lateinit var subscription: Disposable
 
-
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
+
+    val errorMessage:MutableLiveData<Int> = MutableLiveData()
+    val errorClickListener = View.OnClickListener { loadPosts() }
 
     init {
         loadPosts()
@@ -36,6 +39,7 @@ class PostListViewModel : BaseViewModel() {
 
     private fun onRetrivePostListStart() {
         loadingVisibility.value = View.VISIBLE
+        errorMessage.value = null
     }
 
     private fun onRetrievePostListFinish() {
@@ -46,7 +50,7 @@ class PostListViewModel : BaseViewModel() {
     }
 
     private fun onRetrievePostListError() {
-
+        errorMessage.value = R.string.post_error
     }
 
 
