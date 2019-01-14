@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import vitorota.mvvmposts.R
 import vitorota.mvvmposts.databinding.ActivityPostListBinding
+import vitorota.mvvmposts.injection.ViewModelFactory
 
 class PostListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPostListBinding
@@ -24,7 +25,7 @@ class PostListActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_post_list)
         binding.postList.layoutManager = LinearLayoutManager(this)
 
-        viewModel = ViewModelProviders.of(this).get(PostListViewModel::class.java)
+        viewModel = ViewModelProviders.of(this,ViewModelFactory(this)).get(PostListViewModel::class.java)
         viewModel.errorMessage.observe(this, Observer {
             if(it != null) showError(it) else hideError()
         })

@@ -9,7 +9,7 @@ import vitorota.mvvmposts.model.Post
  * @author Vitor Ota
  * @since 14/01/2019
  */
-class PostViewModel : BaseViewModel() {
+class PostViewModel() : BaseViewModel() {
     private val postTitle = MutableLiveData<String>()
     private val postBody = MutableLiveData<String>()
 
