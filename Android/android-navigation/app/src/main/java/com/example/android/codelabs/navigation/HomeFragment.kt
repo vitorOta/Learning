@@ -21,6 +21,7 @@ import android.view.*
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 
 /**
  * Fragment used to show how to navigate to another destination
@@ -38,9 +39,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.navigate_destination_button)?.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.next_action, null)
-        )
+        view.findViewById<Button>(R.id.navigate_destination_button)?.setOnClickListener {
+            val flowStepNumberArg = 1
+            val action = HomeFragmentDirections.nextAction(flowStepNumberArg)
+            findNavController().navigate(action)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
