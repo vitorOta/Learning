@@ -27,6 +27,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/shopping_dest"
+            app:destination="@id/shoppingFragment" />
     </fragment>
 
     <fragment
@@ -76,4 +79,9 @@
 
         <deepLink app:uri="www.example.com/{myarg}" />
     </fragment>
+    <fragment
+        android:id="@+id/shoppingFragment"
+        android:name="com.example.android.codelabs.navigation.ShoppingFragment"
+        android:label="shopping_fragment"
+        tools:layout="@layout/shopping_fragment" />
 </navigation>
